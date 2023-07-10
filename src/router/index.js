@@ -14,7 +14,8 @@ const routes = [
     children:[
       {path: 'resume', name: 'Resume',component: () => import('../views/Resume.vue')},
       {path: 'home', name: 'Home',component: () => import('../views/Home.vue')},
-      {path: 'statisticsView', name: 'StatisticsView',component: () => import('../views/StatisticsView.vue')}
+      {path: 'statisticsView', name: 'StatisticsView',component: () => import('../views/StatisticsView.vue')},
+      {path: 'resumeAnalysis', name: 'ResumeAnalysis',component: () => import('../views/ResumeAnalysis.vue')},
     ]
   },
 

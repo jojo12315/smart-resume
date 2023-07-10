@@ -7,7 +7,7 @@
       <el-button type="primary" class="ml-5">搜素</el-button>
     </div>
     <div style="margin: 10px 0">
-      <el-button type="primary">新增<i class="el-icon-circle-plus-outline"></i></el-button>
+      <el-button type="primary" @click="dialogVisible = true">新增<i class="el-icon-circle-plus-outline"></i></el-button>
       <el-button type="danger">批量删除<i class="el-icon-circle-remove-outline"></i></el-button>
       <el-button type="primary">导入<i class="el-icon-bottom"></i></el-button>
       <el-button type="primary">导出<i class="el-icon-top"></i></el-button>
@@ -33,10 +33,29 @@
     </el-table>
     <div style="padding: 10px 0">
       <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange"
-                     :current-page="currentPage4" :page-sizes="[5, 10, 15, 20]" :page-size="10"
+                     :page-sizes="[5, 10, 15, 20]" :page-size="10"
                      layout="total, sizes, prev, pager, next, jumper" :total="400">
       </el-pagination>
     </div>
+
+    <el-dialog
+        title="简历录入"
+        :visible.sync="dialogVisible"
+        width="500px"
+        :before-close="handleClose">
+      <center>
+      <el-upload
+          class="upload-demo"
+          drag
+          action="http://172.24.92.27:10001/file2text"
+          :on-success="handleSuccess"
+          multiple>
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+      </el-upload>
+      </center>
+    </el-dialog>
+
   </div>
 </template>
 
@@ -47,9 +66,29 @@ export default {
     return{
       users: [],
       headerBg:'headerBg',
+      dialogVisible: false
     }
   },
   methods: {
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
+    },
+    handleSuccess(res){
+        if(res.status){
+          this.fetchUsers()
+          this.dialogVisible=false
+        }
+    },
+    handleClose(done) {
+      this.$confirm('确认关闭？')
+          .then(_ => {
+            done();
+          })
+          .catch(_ => {});
+    },
     fetchUsers() {
       const form = new FormData();
 
@@ -78,8 +117,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .headerBg {
   background-color: #eee !important;
+}
+.upload-demo{
 }
 </style>
