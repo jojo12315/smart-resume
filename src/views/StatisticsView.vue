@@ -1,9 +1,9 @@
 <template>
-  <el-container style="min-height: 100vh;">
+  <div  style="width:1100px;height: 1100px;margin: 0 auto;">
     <div id="main" style="width:1000px;height: 1000px;margin: 0 auto;">
 
     </div>
-  </el-container>
+  </div>
 </template>
 <style></style>
 <script>
@@ -18,45 +18,9 @@ export default {
 
     return {
       users: [],
-      collapseBtnClass: 'el-icon-s-fold',
-      isCollapse: false,
-      sideWidth: 200,
-      textShow: true,
-      headerBg: 'headerBg'
     }
   },
   methods: {
-    collapse() {
-      this.isCollapse = !this.isCollapse
-      if (this.isCollapse) {
-        this.sideWidth = 64
-        this.collapseBtnClass = 'el-icon-s-unfold'
-        this.textShow = false
-      } else {
-        this.sideWidth = 200
-        this.collapseBtnClass = 'el-icon-s-fold'
-        this.textShow = true
-      }
-    },
-    fetchUsers() {
-      const form = new FormData();
-
-      const options = {
-        method: 'POST',
-        headers: { 'content-type': 'multipart/form-data; boundary=---011000010111000001101001' }
-      };
-
-      options.body = form;
-
-      fetch('http://172.24.92.27:10001/show', options)
-          .then(response => response.json())
-          .then(response => {
-            this.users = response.result; // 将返回结果赋值给Vue组件的users属性
-
-          })
-          .catch(err => console.error(err));
-
-    },
     mychart() {
       var chartDom = document.getElementById('main');
       var myChart = echarts.init(chartDom);
@@ -117,14 +81,7 @@ export default {
     }
   },
   mounted() {
-    this.fetchUsers();
     this.mychart();
-
   }
 }
 </script>
-<style>
-.headerBg {
-  background-color: #eee !important;
-}
-</style>
