@@ -26,7 +26,7 @@
       </el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="primary">查看</el-button>
+          <el-button type="primary" @click="resumeView(scope.row.user_name)">查看</el-button>
           <el-button type="success">编辑</el-button>
         </template>
       </el-table-column>
@@ -88,6 +88,9 @@ export default {
             done();
           })
           .catch(_ => {});
+    },
+    resumeView(name){
+      this.$router.push({name: 'resumeView',params:{ name:name}});
     },
     fetchUsers() {
       const form = new FormData();

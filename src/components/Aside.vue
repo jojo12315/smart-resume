@@ -12,14 +12,14 @@
     </el-menu-item>
     <el-submenu index="2">
       <template slot="title"><i class="el-icon-menu"></i><span slot="title">系统管理</span></template>
-      <el-menu-item-group>
+      <el-submenu>
         <template slot="title">数据管理</template>
         <el-menu-item index="/resume">简历查询</el-menu-item>
         <el-menu-item index="/statisticsView">节点</el-menu-item>
-      </el-menu-item-group>
+      </el-submenu>
       <el-submenu index="2-4">
         <template slot="title">功能管理</template>
-        <el-menu-item index="/resumeAnalysis">选项4-1</el-menu-item>
+        <el-menu-item index="/resumeAnalysis">简历解析</el-menu-item>
       </el-submenu>
     </el-submenu>
   </el-menu>

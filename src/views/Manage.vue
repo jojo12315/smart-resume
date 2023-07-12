@@ -12,7 +12,7 @@
         <Header :collapseBtnClass="collapseBtnClass" :collapse="collapse" />
       </el-header>
 
-      <el-main>
+      <el-main style="background-color: rgba(244,246,249,0.89)">
         <router-view />
       </el-main>
     </el-container>
