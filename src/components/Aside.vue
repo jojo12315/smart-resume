@@ -20,6 +20,7 @@
       <el-submenu index="2-4">
         <template slot="title">功能管理</template>
         <el-menu-item index="/resumeAnalysis">简历解析</el-menu-item>
+        <el-menu-item index="/matchingView">人岗匹配</el-menu-item>
       </el-submenu>
     </el-submenu>
   </el-menu>

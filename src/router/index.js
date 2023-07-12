@@ -17,6 +17,7 @@ const routes = [
       {path: 'statisticsView', name: 'StatisticsView',component: () => import('../views/StatisticsView.vue')},
       {path: 'resumeAnalysis', name: 'ResumeAnalysis',component: () => import('../views/ResumeAnalysis.vue')},
       {path: 'resumeView', name: 'resumeView',component: () => import('../views/ResumeView.vue')},
+      {path: 'matchingView', name: 'matchingView',component: () => import('../views/MatchingView.vue')},
     ]
   },
 
